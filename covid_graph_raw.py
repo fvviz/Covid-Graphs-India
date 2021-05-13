@@ -8,10 +8,12 @@ from collections import deque
 import requests
 import io
 
-from _utils import month_dict, api_url
+from utils.constants import month_dict, api_url
+from utils.constants import save_graph
 
 state = "India"
 year = 2021
+interval = 500
 
 api_response = requests.get(api_url).content
 data = pd.read_csv(io.StringIO(api_response.decode('utf-8')))
@@ -120,5 +122,6 @@ def update(i):
     axes[1][1].set_title("Tests (Daily)", fontsize=9)
 
 
-ani = FuncAnimation(fig, update, interval=500, frames=440)
+ani = FuncAnimation(fig, update, interval=interval, frames=1000)
+#save_graph(ani, "covid_india.gif")
 plt.show()
