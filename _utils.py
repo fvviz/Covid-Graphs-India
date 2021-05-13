@@ -1,6 +1,7 @@
-
+from matplotlib.animation import writers
 
 api_url = "https://api.covid19india.org/csv/latest/states.csv"
+
 month_dict = {
     "01": "Jan",
     "02": "Feb",
@@ -18,4 +19,7 @@ month_dict = {
 }
 
 
-
+def save_video(animation, name):
+    writer_ = writers["ffmpeg"]
+    writer = writer_(fps=15, metadata={'artist': 'Me'}, bitrate=1800)
+    animation.save(name, writer)

@@ -1,13 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation, writers
+from matplotlib.animation import FuncAnimation
 import numpy as np
 
 from itertools import count
 from collections import deque
 import requests
 import io
-from IPython import display
 
 from _utils import month_dict, api_url
 
@@ -33,6 +32,7 @@ def create_daily(df, col):
         sub = df[col][i] - df[col][i-1]
         df[f"daily_{col}"].iloc[i] = sub
 
+
 data_state = data[data.Date.str.startswith(str(year))]
 data_state = data_state[data_state.State == state]
 data_state = data_state.reset_index(drop=True)
@@ -46,9 +46,7 @@ data_state = data_state.reset_index(drop=True)
 
 
 create_daily(data_state, "Tested")
-#print("3 index", np.unique(data_state.index), "\n total",  len(np.unique(data_state.index)))
 data_state = data_state.drop([0, data_state.shape[0]-1])
-#print("4 index", np.unique(data_state.index), "\n total",  len(np.unique(data_state.index)))
 days_list = [f"{month_dict[date[5:7]]} {date[8:]}" for date in data_state.Date]
 
 data_state = data_state.fillna(0)
@@ -65,9 +63,7 @@ def update(i):
     else:
         fig.suptitle(f"Covid-19 analysis {state} - {year}", fontsize=16)
 
-
     ind = next(index)
-
     print("current index", ind+1)
 
     days.popleft()
@@ -124,11 +120,5 @@ def update(i):
     axes[1][1].set_title("Tests (Daily)", fontsize=9)
 
 
-
-ani = FuncAnimation(fig, update, interval=500, frames = 440)
-#Writer = writers["ffmpeg"]
-#writer = Writer(fps=15, metadata={'artist': 'Me'}, bitrate=1800)
-
-#ani.save('covid india 2021 4.mp4', writer)
-
+ani = FuncAnimation(fig, update, interval=500, frames=440)
 plt.show()
