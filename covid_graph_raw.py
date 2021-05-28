@@ -123,5 +123,4 @@ def update(i):
 
 
 ani = FuncAnimation(fig, update, interval=interval, frames=1000)
-#save_graph(ani, "covid_india_2.gif")
 plt.show()
