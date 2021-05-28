@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.ttk
 from collections import deque
 from itertools import count
 import numpy as np

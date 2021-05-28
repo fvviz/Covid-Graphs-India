@@ -13,7 +13,7 @@ from utils.constants import save_graph
 
 state = "India"
 year = 2021
-interval = 500
+interval = 200
 
 api_response = requests.get(api_url).content
 data = pd.read_csv(io.StringIO(api_response.decode('utf-8')))
@@ -123,5 +123,5 @@ def update(i):
 
 
 ani = FuncAnimation(fig, update, interval=interval, frames=1000)
-#save_graph(ani, "covid_india.gif")
+#save_graph(ani, "covid_india_2.gif")
 plt.show()
