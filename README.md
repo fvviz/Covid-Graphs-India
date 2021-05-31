@@ -1,6 +1,6 @@
 # Covid-Graphs
 ![Python-Versions](https://img.shields.io/badge/python-3.9-blue?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)]
+![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
 
 <p align="center">
     <img src="https://i.imgur.com/Mafuy0C.gif">
